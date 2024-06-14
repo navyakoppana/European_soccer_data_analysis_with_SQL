@@ -22,6 +22,7 @@ team_attributes(1).csv: It contains various columns that reflect each team’s p
 3. The matches were played from July 2008 to May 2016.
 4. France has the highest number of teams and Switzerland has the least number of teams.
 5. The highest number of goals are scored by England in 2009-10.
-6. The Spanish team "FC Barcelona" has the highest number of wins
+6. The Spanish team "FC Barcelona" has the highest number of wins.
+7. Top players like Messi and Ronaldo have healthy BMI and high overall ratings (94 and 93). Overweight players have lower ratings (90-50), with most below 75. Underweight players have varied ratings (82-56) with balanced work rates. Obese players have very low work rates.In conclusion, a healthy BMI is associated with higher overall ratings and stronger attacking work rates in soccer players, while being overweight or obese is linked to reduced ratings. Maintaining a healthy weight is crucial for optimal performance in the sport.
 ### Acknowledgements
 The dataset is taken from Kaggle <a href="https://www.kaggle.com/datasets/abdelrhmanragab/european-soccer-database">European_Soccer_Database</a>
