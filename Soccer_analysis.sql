@@ -84,3 +84,21 @@ ON m.home_team_api_id=t.team_api_id
 GROUP BY t.team_long_name
 ORDER BY no_of_wins DESC;
 
+Q.7. How are the player statistics(rating,attacking and defensive work rate) based on BMI?
+	
+WITH t2 AS(
+SELECT DISTINCT pa.player_api_id,pa.date,MAX(pa.overall_rating) as max_rating,pa.attacking_work_rate ,pa.defensive_work_rate,RANK()OVER(PARTITION BY pa.player_api_id ORDER BY pa.date DESC) AS rank
+FROM player_attributes pa
+WHERE pa.attacking_work_rate IN('medium','high','low')
+GROUP BY pa.player_api_id,pa.date,pa.attacking_work_rate ,pa.defensive_work_rate)
+SELECT DISTINCT t1.player_name,t1.BMI,t3.max_rating,t3.attacking_work_rate,t3.defensive_work_rate
+FROM(
+SELECT DISTINCT player_api_id,player_name,height,weight,ROUND(((weight/(height*height))*4535.5),2) AS BMI
+FROM player
+GROUP BY player_api_id,player_name,height,weight)t1
+JOIN(
+SELECT *
+FROM t2
+WHERE t2.rank=1)t3
+ON t1.player_api_id=t3.player_api_id
+ORDER BY t3.max_rating DESC;
